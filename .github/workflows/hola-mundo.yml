@@ -1,0 +1,19 @@
+name: Aprendiendo GitHub Actions
+run-name: ¡Estoy aprendiendo GitHub Actions!
+on: [push]
+jobs:
+    hola-mundo:
+      runs-on: windows-latest
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v4
+        - name: Configurar dotnet
+          uses: actions/setup-dotnet@v4
+          with:
+            dotnet-version: '8.0.x'
+        - name: Restaurar dependencias
+          run: dotnet restore ./GitHubActionsCourse/GitHubActionsCourse.csproj
+        - name: Compilar la solución
+          run: dotnet build ./GitHubActionsCourse/GitHubActionsCourse.csproj --configuration Release --no-restore
+        - name: Ejecutar el programa
+          run: dotnet run --project ./GitHubActionsCourse/GitHubActionsCourse.csproj
