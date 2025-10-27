@@ -1,0 +1,72 @@
+name: Triggers
+run-name: ¡Estoy aprendiendo a usar diferentes Triggers!
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - 'GitHubActionsCourse/**.cs'
+  issues:
+    types:
+      - labeled
+  workflow_dispatch:
+    inputs:
+      lenguaje_favorito:
+        description: 'Lenguaje favorito'
+        default: C#
+        required: true
+        type: choice
+        options:
+          - Python
+          - JavaScript
+          - C#
+      nombre:
+        description: 'Tu nombre'
+        required: true
+        default: David Rodriguez Canto
+        type: string
+  schedule:
+    - cron:  '15 22 * * *'
+jobs:
+  hola-mundo-manual:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Definir nombre
+        run: echo "USERNAME=${{ inputs.nombre }}" >> $GITHUB_ENV
+        shell: pwsh
+      - name: Definir lenguaje
+        run: echo "LANGUAGE=${{ inputs.lenguaje_favorito }}" >> $GITHUB_ENV
+        shell: pwsh
+      - name: Configurar dotnet
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Restaurar dependencias
+        run: dotnet restore ./GitHubActionsCourse/GitHubActionsCourse.csproj
+      - name: Compilar la solución
+        run: dotnet build ./GitHubActionsCourse/GitHubActionsCourse.csproj --configuration Release --no-restore
+      - name: Ejecutar el programa
+        run: dotnet run --project ./GitHubActionsCourse/GitHubActionsCourse.csproj
+  hola-mundo:
+    if: ${{ github.event_name != 'workflow_dispatch' }}
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Definir variable
+        run: echo "USERNAME=${{ github.actor }}" >> $GITHUB_ENV
+        shell: pwsh
+      - name: Configurar dotnet
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Restaurar dependencias
+        run: dotnet restore ./GitHubActionsCourse/GitHubActionsCourse.csproj
+      - name: Compilar la solución
+        run: dotnet build ./GitHubActionsCourse/GitHubActionsCourse.csproj --configuration Release --no-restore
+      - name: Ejecutar el programa
+        run: dotnet run --project ./GitHubActionsCourse/GitHubActionsCourse.csproj

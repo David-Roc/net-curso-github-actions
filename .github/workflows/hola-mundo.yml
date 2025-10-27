@@ -7,6 +7,9 @@ jobs:
       steps:
         - name: Checkout
           uses: actions/checkout@v4
+        - name: Definir variable
+          run: echo "USERNAME=${{ github.actor }}" >> $GITHUB_ENV
+          shell: pwsh
         - name: Configurar dotnet
           uses: actions/setup-dotnet@v4
           with:
