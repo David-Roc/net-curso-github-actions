@@ -2,8 +2,8 @@ name: Contextos
 run-name: ¡Estoy aprendiendo a usar diferentes contextos!
 on: 
   push:
-    branches:
-      - main
+    # branches:
+    #   - main
   workflow_dispatch:
     inputs:
       nombre_usuario:
