@@ -1,0 +1,15 @@
+D:\Platzi\net-curso-github-actions\GitHubActionsCourse\bin\Debug\net9.0\GitHubActionsCourse.exe
+D:\Platzi\net-curso-github-actions\GitHubActionsCourse\bin\Debug\net9.0\GitHubActionsCourse.deps.json
+D:\Platzi\net-curso-github-actions\GitHubActionsCourse\bin\Debug\net9.0\GitHubActionsCourse.runtimeconfig.json
+D:\Platzi\net-curso-github-actions\GitHubActionsCourse\bin\Debug\net9.0\GitHubActionsCourse.dll
+D:\Platzi\net-curso-github-actions\GitHubActionsCourse\bin\Debug\net9.0\GitHubActionsCourse.pdb
+D:\Platzi\net-curso-github-actions\GitHubActionsCourse\obj\Debug\net9.0\GitHubActionsCourse.GeneratedMSBuildEditorConfig.editorconfig
+D:\Platzi\net-curso-github-actions\GitHubActionsCourse\obj\Debug\net9.0\GitHubActionsCourse.AssemblyInfoInputs.cache
+D:\Platzi\net-curso-github-actions\GitHubActionsCourse\obj\Debug\net9.0\GitHubActionsCourse.AssemblyInfo.cs
+D:\Platzi\net-curso-github-actions\GitHubActionsCourse\obj\Debug\net9.0\GitHubActionsCourse.csproj.CoreCompileInputs.cache
+D:\Platzi\net-curso-github-actions\GitHubActionsCourse\obj\Debug\net9.0\GitHubActionsCourse.sourcelink.json
+D:\Platzi\net-curso-github-actions\GitHubActionsCourse\obj\Debug\net9.0\GitHubActionsCourse.dll
+D:\Platzi\net-curso-github-actions\GitHubActionsCourse\obj\Debug\net9.0\refint\GitHubActionsCourse.dll
+D:\Platzi\net-curso-github-actions\GitHubActionsCourse\obj\Debug\net9.0\GitHubActionsCourse.pdb
+D:\Platzi\net-curso-github-actions\GitHubActionsCourse\obj\Debug\net9.0\GitHubActionsCourse.genruntimeconfig.cache
+D:\Platzi\net-curso-github-actions\GitHubActionsCourse\obj\Debug\net9.0\ref\GitHubActionsCourse.dll

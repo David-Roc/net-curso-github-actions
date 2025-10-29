@@ -1,0 +1,40 @@
+name: Contextos
+run-name: ¡Estoy aprendiendo a usar diferentes contextos!
+on: 
+  push:
+    # branches:
+    #   - main
+  workflow_dispatch:
+    inputs:
+      nombre_usuario:
+        description: 'Nombre de usuario'
+        required: true
+        default: "David Rodriguez Canto"
+        type: string
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Evento
+        run: echo "El evento es ${{ github.event_name }}"
+      - name: Repositorio
+        run: echo "El repositorio es ${{ github.repository }}"
+      - name: Nombre de usuario
+        run: echo "USERNAME=${{ github.actor }}" >> $GITHUB_ENV
+      - name: Configurar dotnet
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Restaurar dependencias
+        run: dotnet restore ./GitHubActionsCourse/GitHubActionsCourse.csproj
+      - name: Compilar la solución
+        run: dotnet build ./GitHubActionsCourse/GitHubActionsCourse.csproj --configuration Release --no-restore
+      - run: echo "GitHubActionsCourse compilado por ${{ github.actor }}"
+  check-main:
+    needs: build
+    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Desplegando en la rama $GITHUB_REF"

@@ -1,0 +1,55 @@
+name: Expresiones
+run-name: ¡Estoy aprendiendo a usar diferentes expresiones!
+on: 
+  workflow_dispatch:
+    inputs:
+      nombre_usuario:
+        description: 'Nombre de usuario'
+        required: true
+        default: "David Rodriguez Canto"
+        type: string
+      rama_actual:
+        description: 'Rama actual'
+        required: true
+        default: "aprendiendo-github-actions"
+        type: string
+      edad:
+        description: 'Edad'
+        required: true
+        default: 29
+        type: number
+jobs:
+  mayor_de_edad:
+    if: ${{ inputs.edad >= 18 }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verificación de edadv
+        run: echo "El usuario ${{ inputs.nombre_usuario }} es mayor de edad, con la edad de ${{ inputs.edad }}."
+  menor_de_edad:
+    if: ${{ inputs.edad < 18 }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verificación de edad
+        run: echo "El usuario ${{ inputs.nombre_usuario }} es menor de edad, con la edad de ${{ inputs.edad }}."
+  expresiones:
+    needs: [mayor_de_edad, menor_de_edad]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Evento
+        run: echo "El evento es ${{ github.event_name }}"
+      - name: Repositorio
+        run: echo "El repositorio es ${{ github.repository }}"
+      - name: Nombre de usuario
+        run: echo "USERNAME=${{ github.actor }}" >> $GITHUB_ENV
+      - name: Configurar dotnet
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Restaurar dependencias
+        run: dotnet restore ./GitHubActionsCourse/GitHubActionsCourse.csproj
+      - name: Compilar la solución
+        run: dotnet build ./GitHubActionsCourse/GitHubActionsCourse.csproj --configuration Release --no-restore
+      - name: Ejecutar el programa
+        run: dotnet run --project ./GitHubActionsCourse/GitHubActionsCourse.csproj
