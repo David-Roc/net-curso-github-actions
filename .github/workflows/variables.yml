@@ -1,7 +1,7 @@
 name: Saludo usando variables
 run-name: ¡Estoy aprendiendo a usar Variables!
 on:
-  workflow_dispatch
+  workflow_dispatch:
 env:
   DIA_DE_SEMANA: Martes
 jobs:
