@@ -11,7 +11,7 @@ jobs:
           run: echo "USERNAME=${{ github.actor }}" >> $GITHUB_ENV
           shell: pwsh
         - name: Configurar dotnet
-          uses: actions/setup-dotnet@v4
+          uses: actions/setup-dotnet@v5
           with:
             dotnet-version: '8.0.x'
         - name: Restaurar dependencias
