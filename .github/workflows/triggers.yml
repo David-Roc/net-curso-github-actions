@@ -34,7 +34,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Definir nombre
         run: echo "USERNAME=${{ inputs.nombre }}" >> $GITHUB_ENV
         shell: pwsh
@@ -56,7 +56,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Definir variable
         run: echo "USERNAME=${{ github.actor }}" >> $GITHUB_ENV
         shell: pwsh
